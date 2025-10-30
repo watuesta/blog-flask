@@ -25,6 +25,7 @@
                     <td>
                         <a href="{{ url_for('post.update', id=post.id) }}" class="btn btn-sm btn-warning">Editar</a>
                         <a href="{{ url_for('post.delete', id=post.id) }}" class="btn btn-sm btn-danger">Eliminar</a>
+                        <a href="{{ url_for('home.blog', url = post.url) }}" class="btn btn-sm btn-success">Ver</a>
                     </td>
                 </tr>
                 {% endif %}
