@@ -4,5 +4,5 @@ POSTGRESQL = "postgresql+psycopg2://postgres:Atu.911012@localhost:5432/blogposts
 class Config:
     DEBUG = False
     SECRET_KEY = 'dev-will'
-    SQLALCHEMY_DATABASE_URI = POSTGRESQL
+    SQLALCHEMY_DATABASE_URI = SQLITE
     CKEDITOR_PKG_TYPE = 'full'
