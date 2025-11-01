@@ -21,9 +21,8 @@
                 {% for post in posts | reverse %}
                 {% if g.user.id == post.author %}
                 <tr>
-                    <td>{{ post.title }}</td>
+                    <td><a href="{{ url_for('home.blog', url = post.url) }}" class="text-decoration-none link-secondary fw-semibold hover-underline">{{ post.title }}</a></td>
                     <td>
-                        <a href="{{ url_for('home.blog', url = post.url) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-eye"></i></a>
                         <a href="{{ url_for('post.update', id=post.id) }}" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="{{ url_for('post.delete', id=post.id) }}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
                     </td>
