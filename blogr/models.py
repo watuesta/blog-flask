@@ -9,7 +9,7 @@ class User(db.Model):
     email         = db.Column(db.String(120), unique=True, nullable=False)
     password      = db.Column(db.Text, nullable=False)
     photo         = db.Column(db.String(200))
-    genre         = db.Column(db.String(15), nullable=False)
+    genre         = db.Column(db.String(15), nullable=False, default='Sin genero')
 
     # Constructor
     def __init__(self, username, email, password, genre, photo=None):
