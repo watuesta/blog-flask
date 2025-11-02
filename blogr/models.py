@@ -8,14 +8,16 @@ class User(db.Model):
     username      = db.Column(db.String(50), nullable=False)
     email         = db.Column(db.String(120), unique=True, nullable=False)
     password      = db.Column(db.Text, nullable=False)
-    photo          = db.Column(db.String(200))
+    photo         = db.Column(db.String(200))
+    genre         = db.Column(db.String(15), nullable=False)
 
     # Constructor
-    def __init__(self, username, email, password, photo=None):
+    def __init__(self, username, email, password, genre, photo=None):
         self.username = username
         self.email    = email
         self.password = password
         self.photo    = photo
+        self.genre    = genre
     
     def __repr__(self):
         return f"User: {self.username}"

@@ -1,14 +1,19 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app():
 
     # Crear aplicacion
     app = Flask(__name__)
     app.config.from_object('config.Config')
+
+    # Inicializar extensiones con la app
     db.init_app(app)
+    migrate.init_app(app, db)
 
     from flask_ckeditor import CKEditor
     ckeditor = CKEditor(app)
@@ -26,9 +31,9 @@ def create_app():
     from blogr import post
     app.register_blueprint(post.bp)
 
-    from .models import User, Post
-    # Me permite migrar todos los modelos a la bd
-    with app.app_context():
-        db.create_all()
+    from blogr.models import User, Post
+    # # Me permite migrar todos los modelos a la bd
+    # with app.app_context():
+    #     db.create_all()
 
     return app

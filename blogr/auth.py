@@ -13,7 +13,8 @@ def register():
         username = request.form.get('username')
         email    = request.form.get('email')
         password = request.form.get('password')
-        user = User(username, email, generate_password_hash(password))
+        genre = request.form.get('genre')
+        user = User(username, email, genre, generate_password_hash(password))
         # Validacion de datos
         error = None
         # Comprobando nombre de usuario con los existentes
@@ -80,6 +81,8 @@ def profile(id):
     if request.method == 'POST':
         user.username = request.form.get('username')
         password = request.form.get('password')
+        genre = request.form.get('genre')
+        user.genre = genre
 
         error = None
         if len(password) != 0:
